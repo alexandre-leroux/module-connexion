@@ -44,29 +44,31 @@
 
 </header>
 
+
+<main>
 <section class="prestentation">
 
-        <div class="container h-100">
+        <div class="container-lg h-100 mb-5">
 
-            <div class="row  h-100  flex-column  ">
+            <div class="row-lg  h-100  flex-column  ">
                 
                 <h1 class="text-center my-5 text-secondary">Bienvenue chez Welcome !</h1>
 
-                <div class="row bg-light no-gutters  h-75" id=logo_presentation>
+                <div class="row-lg bg-light no-gutters d-flex flex-wrap  h-75" id=logo_presentation>
 
-                    <div class="col-4  h-75 d-flex flex-column justify-content-between">
-                        <h2 class=text-center>Les meilleures solutions</h2>
-                        <img class="img-fluid d-block mx-auto" src="media/012-mortgage loan.png" alt="">
+                    <div class="col-md d-flex flex-column justify-content-between">
+                        <h2 class="text-center text-info">Une équipe dynamique</h2>
+                        <img class="img-fluid d-block mx-auto mb-5" src="media/012-mortgage loan.png" alt="">
                     </div>
 
-                    <div class="col-4  h-75 d-flex flex-column justify-content-between">
-                        <h2 class="text-center">Des solutions adaptées à vos besoins</h2>
-                        <img class="img-fluid d-block mx-auto" src="media/013-park.png" alt="">
+                    <div class="col-md  d-flex flex-column justify-content-between">
+                        <h2 class="text-center text-info">Des solutions adaptées à vos besoins</h2>
+                        <img class="img-fluid d-block mx-auto mb-5" src="media/013-park.png" alt="">
                     </div>
 
-                    <div class="col-4  h-75 d-flex flex-column justify-content-between">
-                        <h2 class="text-center">Une écoute au quotidien</h2>
-                        <img class="img-fluid d-block mx-auto " src="media/014-rent.png" alt="">
+                    <div class="col-md  d-flex flex-column justify-content-between">
+                        <h2 class="text-center text-info">Une écoute au quotidien</h2>
+                        <img class="img-fluid d-block mx-auto mb-5 " src="media/014-rent.png" alt="">
                     </div>
 
                 </div>
@@ -76,9 +78,29 @@
         </div>
 
 </section>
+</main>
+
+<footer  id="footer">
+
+    <div class="container-fluid h-100  mt-auto sticky-footer-wrapper">
+
+            <div class="row h-100 d-flex justify-content-center align-items-center" id="footer_div_icone">
+
+                <div class="col-1 h-100">
+                    <a class="h-100 d-flex justify-content-center align-items-center" href=""><img class="icon_social" src="media/007-whatsapp.svg" alt=""></a>
+                </div>
+                <div class="col-1 h-100 ">
+                    <a class="h-100 d-flex justify-content-center align-items-center"  href=""><img class="icon_social" src="media/014-twitter.svg" alt=""></a>
+                </div>
+                <div class="col-1 h-100">
+                    <a class="h-100 d-flex justify-content-center align-items-center" href=""><img class="icon_social" src="media/045-facebook.svg" alt=""></a>
+                </div>
+
+            </div>
+    </div>
 
 
-
+</footer>
 
 
 
