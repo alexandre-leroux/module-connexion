@@ -1,0 +1,16 @@
+#header{
+    height: 80px;
+}
+
+
+.col-4 img{
+    width: 250px;
+}
+
+.prestentation{
+    height: 100vh;
+}
+
+.col-4 h2{
+    font-size: 1.5rem;
+}
