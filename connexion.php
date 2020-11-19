@@ -66,29 +66,32 @@
 
 <?php
 
-
-
-    @$login = htmlspecialchars($_POST['login']);
-    @$password = htmlspecialchars($_POST['password'], PASSWORD_DEFAULT);
+if ( isset($_POST['submit']))
+{
     
-        if(  isset($_POST['submit'])  )
+
+    $requete = $bdd->prepare(' SELECT * FROM utilisateurs where login = :login');
+    $requete->execute(['login' => $_POST['login']]);
+    $result = $requete->fetch();
+ 
+
+    if ( $result == true)
+    {
+     
+        if ( password_verify($_POST['password'],$result['password']))
         {
-            $reqlogin = $bdd->prepare('SELECT * FROM utilisateurs WHERE login = ? AND password = ?');
-            $reqlogin->execute(array($login, $password));
-            $userexist = $reqlogin->rowCount();
-            if ( $userexist == 1)
-            {
-                echo ' YOUIIIIIIII id';
-            }
-            else
-            {
-                echo ' mauvais id';
-            }
+            echo ' super le mot est bon';
         }
-        else
+        else 
         {
-                echo ' remplir les champs';
+            echo 'identifiants incoorects';
         }
+    }
+}
+else
+{
+
+}
 
 
 
@@ -98,10 +101,7 @@
 
 <?php
 
-    isset($_POST);
-    var_dump( $_POST);
-    echo '<br>';
-    echo $_POST['login'];
+
 
 ?>
 
