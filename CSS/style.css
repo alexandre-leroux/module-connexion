@@ -3,8 +3,6 @@ html{
 }
 body{
     height: 100%;
-      
-    /* html et body reglés ainsi pour footer fixe en bas de page */
 }
 main{
     height: 100%;
@@ -12,6 +10,11 @@ main{
     flex-direction: column;
     justify-content: space-between; 
 }
+  /* html  body et main reglés ainsi pour footer fixe en bas de page */
+
+
+
+
 
 
 #header{

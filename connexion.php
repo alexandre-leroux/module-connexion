@@ -14,7 +14,23 @@
 
 <main>
 
+
+
+
 <?php include("media/code/header.php"); ?>
+
+
+<?php
+
+    $bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    //on ferme la connection
+   
+
+?>
+
+
+
+
 
 
 
@@ -49,6 +65,65 @@
     </div>       
 
 </div>
+
+<?php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //  Récupération de l'utilisateur et de son pass hashé
+$req = $bdd->prepare('SELECT password FROM utilisateurs WHERE login = :login');
+$req->execute(array( 'login' => $pseudo));
+$resultat = $req->fetch();
+
+$mdp = '1234';
+
+// Comparaison du pass envoyé via le formulaire avec la base
+$isPasswordCorrect = ($_POST['password'] == $mdp);
+
+if (!$resultat)
+{
+    echo 'Mauvais identifiant ou mot de passe !';
+}
+else
+{
+    if ($isPasswordCorrect) {
+        session_start();
+        $_SESSION['id'] = $resultat['id'];
+        $_SESSION['pseudo'] = $pseudo;
+        echo 'Vous êtes connecté !';
+    }
+    else {
+        echo 'Mauvais identifiant ou mot de passe !';
+    }
+}
+
+?>
 
 <?php
 
