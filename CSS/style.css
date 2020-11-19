@@ -5,23 +5,18 @@ body{
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between;   
+    /* html et body reglés ainsi pour footer fixe en bas de page */
 }
-
-
 
 
 #header{
     height: 80px;
 }
 
-
+/* taille des images de la partie centrale */
 .col-md img{
     width: 200px;
-}
-
-.prestentation{
-
 }
 
 .col-md h2{
@@ -31,13 +26,30 @@ body{
 footer{
     height: 60px;
     background-color: rgb(124, 124, 124);
+}
 
-
-
+.icon_social{
+ height: 30px;
 }
 
 
 
-.icon_social{
- height: 30px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* page connexion */
+
+#page_centrale_connexion{
+    height: 75vh;
 }

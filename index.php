@@ -9,43 +9,17 @@
     <title>welcome</title>
 </head>
 
+<!--  premier essai avec bootsrtap !!!!  -->
 
 <body>
 
 
-
-<header class="container-sm-fluid sticky-top" id=header>
-
-    <nav class="h-100 navbar navbar-expand-sm navbar-dark bg-dark ">
-
-        <a class="navbar-brand h-100" href=""><img src="media/logo.png"  class="h-100 img-fluid"   alt="logo">Welcome !</a>
-
-        <button class=" navbar-toggler navbar-toggler-dark bg-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <ul class="bg-dark justify-content-around navbar-nav ">
-
-                            <li class="nav-item ml-5 ">
-                                <a class="nav-link " href="#">Créer un compte</a>
-                            </li>
-
-                            <li class="nav-item ml-5 ">
-                                <a class="nav-link " href="#">Se connecter</a>
-                            </li>
-            
-                </ul>
-    
-        </div>
-
-    </nav>
-
-</header>
+<?php include("media/code/header.php"); ?>
 
 
 <main>
+
+<!-- section centrale accueil -->
 <section class="prestentation">
 
         <div class="container-lg h-100 mb-5">
@@ -78,35 +52,15 @@
         </div>
 
 </section>
+
+
+
+
+<?php include("media/code/footer.php");?>
+
+
+
 </main>
-
-<footer  id="footer">
-
-    <div class="container-fluid h-100  mt-auto sticky-footer-wrapper">
-
-            <div class="row h-100 d-flex justify-content-center align-items-center" id="footer_div_icone">
-
-                <div class="col-1 h-100">
-                    <a class="h-100 d-flex justify-content-center align-items-center" href=""><img class="icon_social" src="media/007-whatsapp.svg" alt=""></a>
-                </div>
-                <div class="col-1 h-100 ">
-                    <a class="h-100 d-flex justify-content-center align-items-center"  href=""><img class="icon_social" src="media/014-twitter.svg" alt=""></a>
-                </div>
-                <div class="col-1 h-100">
-                    <a class="h-100 d-flex justify-content-center align-items-center" href=""><img class="icon_social" src="media/045-facebook.svg" alt=""></a>
-                </div>
-
-            </div>
-    </div>
-
-
-</footer>
-
-
-
-
-
-
 
 
 
