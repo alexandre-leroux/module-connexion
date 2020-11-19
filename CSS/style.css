@@ -1,12 +1,16 @@
 html{
-    min-height: 100vh;
+    height: 100%;
 }
 body{
-    height: 100vh;
+    height: 100%;
+      
+    /* html et body reglés ainsi pour footer fixe en bas de page */
+}
+main{
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;   
-    /* html et body reglés ainsi pour footer fixe en bas de page */
+    justify-content: space-between; 
 }
 
 
@@ -33,7 +37,11 @@ footer{
 }
 
 
-
+.prestentation{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
 
 
 

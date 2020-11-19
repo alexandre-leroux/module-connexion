@@ -14,6 +14,8 @@
 <body>
 
 
+
+
 <?php include("media/code/header.php"); ?>
 
 
@@ -22,13 +24,13 @@
 <!-- section centrale accueil -->
 <section class="prestentation">
 
-        <div class="container-lg h-100 mb-5">
+        <div class="container-lg  mb-5">
 
-            <div class="row-lg  h-100  flex-column  ">
+            <div class="row-lg   flex-column  ">
                 
                 <h1 class="text-center my-5 text-secondary">Bienvenue chez Welcome !</h1>
 
-                <div class="row-lg bg-light no-gutters d-flex flex-wrap  h-75" id=logo_presentation>
+                <div class="row-lg no-gutters d-flex flex-wrap  h-75" id=logo_presentation>
 
                     <div class="col-md d-flex flex-column justify-content-between">
                         <h2 class="text-center text-info">Une équipe dynamique</h2>
