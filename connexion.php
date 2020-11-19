@@ -23,8 +23,6 @@
 <?php
 
     $bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    //on ferme la connection
-   
 
 ?>
 
@@ -47,15 +45,15 @@
 
                             <div class="form-group">
                                 <label for="login">Login</label>
-                                <input type="login" name="login" class="form-control" id="login" aria-describedby="emailHelp">
+                                <input  type="login" name="login" required class="form-control" id="login" aria-describedby="emailHelp">
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
-                                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                                <input type="password" name="password" required class="form-control" id="exampleInputPassword1">
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 
                 </form>
 
@@ -70,58 +68,31 @@
 
 
 
+    @$login = htmlspecialchars($_POST['login']);
+    @$password = htmlspecialchars($_POST['password'], PASSWORD_DEFAULT);
+    
+        if(  isset($_POST['submit'])  )
+        {
+            $reqlogin = $bdd->prepare('SELECT * FROM utilisateurs WHERE login = ? AND password = ?');
+            $reqlogin->execute(array($login, $password));
+            $userexist = $reqlogin->rowCount();
+            if ( $userexist == 1)
+            {
+                echo ' YOUIIIIIIII id';
+            }
+            else
+            {
+                echo ' mauvais id';
+            }
+        }
+        else
+        {
+                echo ' remplir les champs';
+        }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //  Récupération de l'utilisateur et de son pass hashé
-$req = $bdd->prepare('SELECT password FROM utilisateurs WHERE login = :login');
-$req->execute(array( 'login' => $pseudo));
-$resultat = $req->fetch();
-
-$mdp = '1234';
-
-// Comparaison du pass envoyé via le formulaire avec la base
-$isPasswordCorrect = ($_POST['password'] == $mdp);
-
-if (!$resultat)
-{
-    echo 'Mauvais identifiant ou mot de passe !';
-}
-else
-{
-    if ($isPasswordCorrect) {
-        session_start();
-        $_SESSION['id'] = $resultat['id'];
-        $_SESSION['pseudo'] = $pseudo;
-        echo 'Vous êtes connecté !';
-    }
-    else {
-        echo 'Mauvais identifiant ou mot de passe !';
-    }
-}
 
 ?>
 

@@ -24,7 +24,10 @@
 
     $bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-    
+    @$login = htmlspecialchars($_POST['login']);
+    @$nom = htmlspecialchars($_POST['nom']);
+    @$prenom = htmlspecialchars($_POST['prenom']);
+    @$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 ?>
 
 
@@ -45,7 +48,7 @@ if ($_POST == NULL)
 
                                             <div class="form-group">
                                                 <label for="login">Choisissez votre pseudo</label>
-                                                <input required type="login" name="login" class="form-control" id="login">
+                                                <input required type="login" name="login" class="form-control" id="login" >
                                             </div>
 
                                             <div class="form-group">
@@ -83,24 +86,31 @@ if ($_POST == NULL)
                 }
 
 else {  
-    
-    
+
+
+
+            
+     
     
             if ( @$_POST['confirm_password'] === @$_POST['password'] )
 
 
                                 {
+
+                                     
+
                                         $req = $bdd->prepare('INSERT INTO utilisateurs(login, nom, prenom, password) VALUES(:login, :nom, :prenom, :password)');
                                         $req->execute(array(
-                                            'login' => @$_POST['login'],
-                                            'nom' => @$_POST['nom'],
-                                            'prenom' => @$_POST['prenom'],
-                                            'password' => @$_POST['password'],  ));
-                                            echo '<div class="row d-flex justify-content-center  no-gutters"><div class="col-6 "><h1 class="text-center">Compte utilisateur créé avec succès</h1></div></div> ';
+                                            'login' => $login,
+                                            'nom' => $nom,
+                                            'prenom' => $prenom,
+                                            'password' => $password,  ));
 
+                                            header('Location: connexion.php');//redirection
+                                          
                                 }
 
-else 
+            else 
 
                                 {?>
 
@@ -116,17 +126,17 @@ else
 
                                                         <div class="form-group">
                                                             <label for="login">Choisissez votre pseudo</label>
-                                                            <input required type="login" name="login" class="form-control" id="login">
+                                                            <input required type="login" name="login" class="form-control" id="login" value="<?php if(isset($login)) {echo $login;} ?>">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="nom">Votre nom</label>
-                                                            <input required type="text" name="nom" class="form-control" id="nom">
+                                                            <input required type="text" name="nom" class="form-control" id="nom" value="<?php if(isset($nom)) {echo $nom;} ?>">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="prenom">Votre prénom</label>
-                                                            <input required type="text" name="prenom" class="form-control" id="prenom">
+                                                            <input required type="text" name="prenom" class="form-control" id="prenom" value="<?php if(isset($prenom)) {echo $prenom;} ?>">
                                                         </div>
 
                                                         <div class="form-group">
@@ -152,6 +162,7 @@ else
                                     
 <?php
 }}
+
 
 ?>
 
