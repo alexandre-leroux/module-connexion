@@ -130,7 +130,7 @@ if ( isset($_POST['submit']))
 <?php include("code/footer.php");?>
 
 
-
+</main>
 
 
 

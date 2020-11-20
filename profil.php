@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,9 +15,33 @@
 
 <body>
 
+<main>
+<?php
+
+    $bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
 
-yes
+?>
+
+
+
+<?php include("code/header-connect.php"); ?>
+
+<?php
+
+$i = $bdd->prepare(  ' SELECT * FROM utilisateurs WHERE login = :login   ' );
+$i->execute(['login' => $_SESSION['login']]);
+$result = $i->fetch();
+
+print_r($result);
+
+?>
+
+
+<?php include("code/footer.php");?>
+
+
+</main>
 
 </body>
 
