@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,7 +19,20 @@
 <main>
 
 <!-- header -->
-<?php include("code/header.php"); ?>
+
+
+
+<?php 
+
+    if (isset($_SESSION['login']))
+        {
+            include("code/header-connect.php");
+        }
+    else
+        {
+            include("code/header.php");
+        }
+ ?>
 
 
 

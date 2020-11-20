@@ -80,7 +80,9 @@ if ( isset($_POST['submit']))
      
         if ( password_verify($_POST['password'],$result['password']))
         {
-            echo ' super le mot est bon';
+           session_start();
+           $_SESSION['login'] = $_POST['login'];
+           header('Location: index.php');//redirection
         }
         else 
         {
