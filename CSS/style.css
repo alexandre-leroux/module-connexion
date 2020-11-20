@@ -50,11 +50,15 @@ footer{
 
 
 
+/* message mauvais identifiants connexion */
+#bad_ident{
+    position: absolute;
+    top: 30vh ! important;
+    left: 20%;
+
+}
 
 
 
 
 
-/* page connexion */
-
-</section>

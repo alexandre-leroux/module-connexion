@@ -31,9 +31,6 @@
 
 
 
-
-
-
 <div class="container  " id="page_centrale_connexion">
 
     <div class="row h-100  ">
@@ -64,6 +61,9 @@
 
 </div>
 
+
+
+
 <?php
 
 if ( isset($_POST['submit']))
@@ -78,20 +78,40 @@ if ( isset($_POST['submit']))
     if ( $result == true)
     {
      
-        if ( password_verify($_POST['password'],$result['password']))
-        {
-           session_start();
-           $_SESSION['login'] = $_POST['login'];
-           header('Location: index.php');//redirection
-        }
-        else 
-        {
-            echo 'identifiants incoorects';
-        }
+
+            if  ( password_verify($_POST['password'],$result['password']) AND $_POST['password'] === 'admin' AND $_POST['login'] === 'admin') 
+       
+
+                { session_start();
+                    $_SESSION['login'] = $_POST['login'];
+                    header('Location: admin.php');//redirection
+                }
+
+                else {
+
+
+                        if ( password_verify($_POST['password'],$result['password']))
+
+                        {
+                        session_start();
+                        $_SESSION['login'] = $_POST['login'];
+                        header('Location: index.php');//redirection
+                        }
+
+                        else 
+                        {
+                            
+                            
+                        }
+
+
+                    }
     }
-}
-else
-{
+    
+    else
+    {
+        echo " <div class='container' id='bad_ident' ><div class='row d-flex justify-content-center'><div class='col-6'><p class='text-center'> identifiants incorrects</p> </div></div></div>";
+    } 
 
 }
 
@@ -110,7 +130,6 @@ else
 <?php include("code/footer.php");?>
 
 
-</main>
 
 
 
