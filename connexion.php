@@ -17,7 +17,7 @@
 
 
 
-<?php include("media/code/header.php"); ?>
+<?php include("code/header.php"); ?>
 
 
 <?php
@@ -34,7 +34,7 @@
 
 
 
-<div class="container " id="page_centrale_connexion">
+<div class="container  " id="page_centrale_connexion">
 
     <div class="row h-100  ">
 
@@ -105,13 +105,13 @@ else
 
 ?>
 
-
+<?php include("code/footer.php");?>
 
 
 </main>
 
 
-<?php include("media/code/footer.php");?>
+
 
 </body>
 

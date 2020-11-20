@@ -1,14 +1,22 @@
 html{
-    height: 100%;
-}
-body{
-    height: 100%;
-}
-main{
-    height: 100%;
+    
+    height: 100% ! important;
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
+}
+body{
+    height: 100% ! important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+
+}
+main{
+
+    display: flex ! important;
+    flex-direction: column ! important;
+    justify-content: space-between ! important; 
 }
   /* html  body et main reglés ainsi pour footer fixe en bas de page */
 
@@ -40,18 +48,6 @@ footer{
 }
 
 
-.prestentation{
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-
-
-
-
-
-
 
 
 
@@ -61,6 +57,4 @@ footer{
 
 /* page connexion */
 
-#page_centrale_connexion{
-    height: 75vh;
-}
+</section>

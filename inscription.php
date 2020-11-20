@@ -17,7 +17,7 @@
 <main>
 
 
-<?php include("media/code/header.php"); ?>
+<?php include("code/header.php"); ?>
 
 
 <?php
@@ -28,6 +28,7 @@
     @$nom = htmlspecialchars($_POST['nom']);
     @$prenom = htmlspecialchars($_POST['prenom']);
     @$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    
 ?>
 
 
@@ -145,7 +146,7 @@ else {
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="confirm_password">Confirmez le Password</label>
+                                                            <label for="confirm_password">Confirmer le Password</label>
                                                             <input required type="password" name="confirm_password" class="form-control" id="confirm_password">
                                                         </div>
                                                         <p>Les mots de passe ne sont pas identiques</p>
@@ -196,7 +197,7 @@ $bdd = null;
 
 
 
-<?php include("media/code/footer.php");?>
+<?php include("code/footer.php");?>
 
 
 </main>
