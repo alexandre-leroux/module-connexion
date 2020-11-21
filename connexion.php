@@ -57,6 +57,17 @@ if ( isset($_POST['submit']))
 
                         {
                         session_start();
+                        $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login  = :login');
+                        $req->execute(array(
+                        
+                                            'login' => $_POST['login']
+                        
+                                            ));
+                        
+                        $_SESSION = $req->fetch();
+
+
+
                         $_SESSION['login'] = $_POST['login'];
                         $m = $_POST['password'];
                         header('Location: index.php');//redirection
