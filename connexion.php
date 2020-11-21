@@ -27,43 +27,6 @@
 ?>
 
 
-
-
-
-
-<div class="container  " id="page_centrale_connexion">
-
-    <div class="row h-100  ">
-
-        <div class="col-12 h-100 d-flex justify-content-center align-items-center">
-
-                <form class="w-50"  action="connexion.php" method="post">
-
-
-                            <div class="form-group">
-                                <label for="login">Login</label>
-                                <input  type="login" name="login" required class="form-control" id="login" aria-describedby="emailHelp">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" name="password" required class="form-control" id="exampleInputPassword1">
-                            </div>
-
-                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-
-                </form>
-
-        </div>
-
-
-    </div>       
-
-</div>
-
-
-
-
 <?php
 
 if ( isset($_POST['submit']))
@@ -95,6 +58,7 @@ if ( isset($_POST['submit']))
                         {
                         session_start();
                         $_SESSION['login'] = $_POST['login'];
+                        $m = $_POST['password'];
                         header('Location: index.php');//redirection
                         }
 
@@ -110,17 +74,47 @@ if ( isset($_POST['submit']))
     
     else
     {
-        echo " <div class='container' id='bad_ident' ><div class='row d-flex justify-content-center'><div class='col-6'><p class='text-center'> identifiants incorrects</p> </div></div></div>";
+        $mauvaisidentifiants = "identifiants incorrects ";
     } 
 
 }
 
 
-
-
-
 ?>
 
+
+
+
+<div class="container  " id="page_centrale_connexion">
+
+<div class="row h-100  ">
+
+    <div class="col-12 h-100 d-flex justify-content-center align-items-center">
+
+            <form class="w-50"  action="connexion.php" method="post">
+
+                        <p class="text-center"> <?php  echo @$mauvaisidentifiants;  ?> </p>
+
+                        <div class="form-group">
+                            <label for="login">Login</label>
+                            <input  type="login" name="login" required class="form-control" id="login" aria-describedby="emailHelp">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" name="password" required class="form-control" id="exampleInputPassword1">
+                        </div>
+
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+
+    </div>
+
+
+</div>       
+
+</div>
 <?php
 
 

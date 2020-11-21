@@ -27,15 +27,48 @@
 
 <?php include("code/header-connect.php"); ?>
 
+
 <?php
 
-$i = $bdd->prepare(  ' SELECT * FROM utilisateurs WHERE login = :login   ' );
-$i->execute(['login' => $_SESSION['login']]);
-$result = $i->fetch();
+$login = 'roger';
+$nom = 'federer';
+$id = 54;
 
-print_r($result);
+
+$sth = $bdd->prepare(' UPDATE utilisateurs SET login = ?, nom = ? WHERE id  = ? ');
+      
+                $sth->execute(array($login,$nom,$id));
+//  ça ca marche
+
+
+
+
+                // code de open class room à reessayer
+                $req = $bdd->prepare('UPDATE jeux_video SET prix = :nvprix, nbre_joueurs_max = :nv_nb_joueurs WHERE nom = :nom_jeu');
+                $req->execute(array(
+                    'nvprix' => $nvprix,
+                    'nv_nb_joueurs' => $nv_nb_joueurs,
+                    'nom_jeu' => $nom_jeu
+                    ));
+ 
+
 
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <?php include("code/footer.php");?>
