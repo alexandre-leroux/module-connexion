@@ -30,25 +30,24 @@
 
 <?php
 
-$login = 'roger';
-$nom = 'federer';
+$login = 'rafael';
+$nom = 'nadal';
 $id = 54;
 
 
-$sth = $bdd->prepare(' UPDATE utilisateurs SET login = ?, nom = ? WHERE id  = ? ');
+// $sth = $bdd->prepare(' UPDATE utilisateurs SET login = ?, nom = ? WHERE id  = ? ');
       
-                $sth->execute(array($login,$nom,$id));
+//                 $sth->execute(array($login,$nom,$id));
 //  ça ca marche
 
 
 
 
                 // code de open class room à reessayer
-                $req = $bdd->prepare('UPDATE jeux_video SET prix = :nvprix, nbre_joueurs_max = :nv_nb_joueurs WHERE nom = :nom_jeu');
+                $req = $bdd->prepare('UPDATE utilisateurs SET login = :login WHERE id  = :id');
                 $req->execute(array(
-                    'nvprix' => $nvprix,
-                    'nv_nb_joueurs' => $nv_nb_joueurs,
-                    'nom_jeu' => $nom_jeu
+                    'login' => $login,
+                    'id' => $id
                     ));
  
 
