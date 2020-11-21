@@ -50,37 +50,39 @@ if ( isset($_POST['submit']))
                     header('Location: admin.php');//redirection
                 }
 
-                else {
+            else
+
+                {
 
 
                         if ( password_verify($_POST['password'],$result['password']))
 
-                        {
-                        session_start();
-                        $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login  = :login');
-                        $req->execute(array(
+                            {
+                                session_start();
+                                $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login  = :login');
+                                $req->execute(array(
+                                
+                                                    'login' => $_POST['login']
+                                
+                                                    ));
                         
-                                            'login' => $_POST['login']
-                        
-                                            ));
-                        
-                        $_SESSION = $req->fetch();
+                                $_SESSION = $req->fetch();
 
 
 
-                        $_SESSION['login'] = $_POST['login'];
-                        $m = $_POST['password'];
-                        header('Location: index.php');//redirection
-                        }
+                                $_SESSION['login'] = $_POST['login'];
+                                $m = $_POST['password'];
+                                header('Location: index.php');//redirection
+                            }
 
                         else 
                         {
-                            
+                            $mauvaisidentifiants = "identifiants incorrects ";
                             
                         }
 
 
-                    }
+                }
     }
     
     else
