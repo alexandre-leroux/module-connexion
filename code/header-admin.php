@@ -2,7 +2,7 @@
 
 <header class="container-fluid-xl  sticky-top" id=header>
 
-    <nav class="h-100 navbar navbar-expand-md navbar-dark bg-dark ">
+    <nav class="h-100 navbar navbar-expand-lg navbar-dark bg-dark ">
 
         <a class="navbar-brand h-100" href="index.php"><img src="media/logo.png"  class="h-100 img-fluid"   alt="logo">Welcome !</a>
 
@@ -19,7 +19,9 @@
                 <ul class="bg-dark justify-content-around navbar-nav ">
 
                             <p class='d-flex align-items-center text-light my-2 bg-dark text-nowrap align ml-5'>Bienvenue <?php echo $_SESSION['prenom'] ?></p>
-
+                            <li class="nav-item ml-5 my-2 ">
+                                <a class="nav-link text-nowrap " href="admin.php">Afficher les utilisateurs</a>
+                            </li>
                             <li class="nav-item ml-5 my-2 ">
                                 <a class="nav-link text-nowrap " href="profil.php">modifier votre profil</a>
                             </li>

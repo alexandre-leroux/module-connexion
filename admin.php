@@ -26,7 +26,7 @@
 
 
 
-<?php include("code/header-connect.php"); ?>
+<?php include("code/header-admin.php"); ?>
 
 <?php //récupère les données du compte pour les afficher dans les inputs
 

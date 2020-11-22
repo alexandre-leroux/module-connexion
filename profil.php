@@ -26,7 +26,19 @@
 
 
 
-<?php include("code/header-connect.php"); ?>
+<?php 
+
+    if ( $_SESSION['login'] == 'admin')
+    {
+        include("code/header-admin.php");
+    }
+    elseif (isset($_SESSION['login']))
+        {
+            include("code/header-connect.php");
+        }
+ 
+ ?>
+
 
 
 
@@ -216,7 +228,7 @@
               
      
                     
-
+<?php  $bdd = null; ?>
 
 
 

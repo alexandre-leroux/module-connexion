@@ -1,6 +1,4 @@
-<?php session_start();
-
-?>
+<?php session_start();?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -24,12 +22,20 @@
 
 
 
-<?php 
+<?php //vérification si session en cours, après connexion. Include du header différent selon qui est connecté
 
-    if (isset($_SESSION['login']))
+    if ( @$_SESSION['login'] == 'admin')
+
+        {
+            include("code/header-admin.php");
+        }
+
+    elseif (isset($_SESSION['login']))
+
         {
             include("code/header-connect.php");
         }
+
     else
         {
             include("code/header.php");

@@ -36,6 +36,11 @@ if ( isset($_POST['submit']))
     $requete = $bdd->prepare(' SELECT * FROM utilisateurs where login = :login');
     $requete->execute(['login' => $_POST['login']]);
     $result = $requete->fetch();
+
+    echo '<pre>';
+    print_r($result) ;
+    echo '</pre>';
+
  
 
     if ( $result == true)
@@ -46,7 +51,18 @@ if ( isset($_POST['submit']))
        
 
                 { session_start();
+                    $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login  = :login');
+                    $req->execute(array(
+                    
+                                        'login' => $_POST['login']
+                    
+                                        ));
+            
+                    $_SESSION = $req->fetch();
+
                     $_SESSION['login'] = $_POST['login'];
+                    $_SESSION['nom'] = $result['nom'];
+                    $_SESSION['prenom'] = $result['prenom'];
                     header('Location: admin.php');//redirection
                 }
 
@@ -68,10 +84,9 @@ if ( isset($_POST['submit']))
                         
                                 $_SESSION = $req->fetch();
 
-
-
                                 $_SESSION['login'] = $_POST['login'];
-                                $m = $_POST['password'];
+                                $_SESSION['nom'] = $result['nom'];
+                                $_SESSION['prenom'] = $result['prenom'];
                                 header('Location: index.php');//redirection
                             }
 
