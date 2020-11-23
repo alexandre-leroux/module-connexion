@@ -44,56 +44,61 @@
 
      
 ?>
-        <table>
-        <thead>
-        <tr>
-            <?php             
-                    foreach ( $donnees as $key => $value)
-                    
-                    {
-                        echo '<th>'.$key.'</th> '; 
-
-                    }
-            ?>
-        </tr>
-    </thead>
 
 
+<div class='container  table-responsive-lg'>
 
-    <tbody>
-            <?php            
-                    echo '<tr>';
-                    foreach ( $donnees as $key => $value)
-                    
-                    {
-                        echo '<td>' .$value.'</td>'; 
+    <table class="table table-bordered table-hover ">
+        <thead class="thead-light">
+            <tr>
+                    <?php             
+                            foreach ( $donnees as $key => $value)
+                            
+                            {
+                                echo '<th>'.$key.'</th> '; 
 
-                    }
-                    echo '<tr/>';
+                            }
+                    ?>
+            </tr>
+        </thead>
 
 
 
-                    while (  (  $donnees = $req->fetch(PDO::FETCH_ASSOC))  != NULL)
+        <tbody >
+                <tr>
+                        <?php            
+                                echo '<tr>';
+                                foreach ( $donnees as $key => $value)
+                                
+                                {
+                                    echo '<td>' .$value.'</td>'; 
 
-                    {
-
-                        echo '<tr>';  
-                        
-                        foreach ( $donnees as $key => $value){
-                            echo '<td>' .$value.'</td>'; 
-                                }  
-                        
-                        '<tr/>';
-                    }
-
-            ?>
-    </tbody>
+                                }
+                                echo '<tr/>';
 
 
-</table>
 
-     
-                    
+                                while (  (  $donnees = $req->fetch(PDO::FETCH_ASSOC))  != NULL)
+
+                                {
+
+                                    echo '<tr>';  
+                                    
+                                    foreach ( $donnees as $key => $value){
+                                        echo '<td>' .$value.'</td>'; 
+                                            }  
+                                    
+                                    '<tr/>';
+                                }
+
+                        ?>
+                </tr>
+        </tbody>
+
+
+    </table>
+    
+</div>
 
 
 
