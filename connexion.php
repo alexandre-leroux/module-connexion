@@ -30,7 +30,7 @@
             {
                 die('Erreur : ' . $e->getMessage());
             }
-            
+
 ?>
 
 
@@ -44,9 +44,8 @@ if ( isset($_POST['submit']))
     $requete->execute(['login' => $_POST['login']]);
     $result = $requete->fetch();
 
-    echo '<pre>';
-    print_r($result) ;
-    echo '</pre>';
+    @$login = htmlspecialchars($_POST['login']);
+    @$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
  
 

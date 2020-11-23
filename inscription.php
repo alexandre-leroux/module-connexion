@@ -16,7 +16,7 @@
 
 <main>
 
-
+<!-- header -->
 <?php include("code/header.php"); ?>
 
 
@@ -43,7 +43,7 @@
 
 <?php
 
-if ($_POST == NULL)
+if ($_POST == NULL)// génération d'un forumaile de base
 
                 {?>
 
@@ -97,94 +97,16 @@ if ($_POST == NULL)
 
 else {  
 
+            $req = $bdd->prepare(' SELECT * FROM utilisateurs WHERE login = :login ');//on va chercher dans la bdd si le login existe déjà
+            $req->execute(array( 'login' => $_POST['login']   ));
+            $donnees = $req->fetch();
 
 
+            if (@$donnees['login'] == $_POST['login'])// on compare le résultat, si c'est le cas on générère un form avec le message " login déjà utilisé " 
             
-     if ( $_POST['login'] != NULL AND  $_POST['nom'] != NULL AND  $_POST['prenom'] != NULL AND  $_POST['password'] != NULL AND  $_POST['confirm_password'] != NULL   )
-
-     {
-    
-            if ( @$_POST['confirm_password'] === @$_POST['password'] )
-
-
-                                {
-
-                                     
-
-                                        $req = $bdd->prepare('INSERT INTO utilisateurs(login, nom, prenom, password) VALUES(:login, :nom, :prenom, :password)');
-                                        $req->execute(array(
-                                            'login' => $login,
-                                            'nom' => $nom,
-                                            'prenom' => $prenom,
-                                            'password' => $password,  ));
-
-                                            header('Location: connexion.php');//redirection
-                                          
-                                }
-
-            else 
-
-                                {?>
-
-
-                                <div class="container " id="page_centrale_connexion">
-
-                                <div class="row h-100  ">
-
-                                    <div class="col-12 h-100 d-flex justify-content-center align-items-center">
-
-                                            <form class="w-50"  action="inscription.php" method="post">
-
-
-                                                        <div class="form-group">
-                                                            <label for="login">Choisissez votre pseudo</label>
-                                                            <input  type="login" name="login" class="form-control" id="login" value="<?php if(isset($login)) {echo $login;} ?>">
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="nom">Votre nom</label>
-                                                            <input  type="text" name="nom" class="form-control" id="nom" value="<?php if(isset($nom)) {echo $nom;} ?>">
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="prenom">Votre prénom</label>
-                                                            <input  type="text" name="prenom" class="form-control" id="prenom" value="<?php if(isset($prenom)) {echo $prenom;} ?>">
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="password">Password</label>
-                                                            <input  type="password" name="password" class="form-control" id="password">
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="confirm_password">Confirmer le Password</label>
-                                                            <input  type="password" name="confirm_password" class="form-control" id="confirm_password">
-                                                        </div>
-                                                        <p>Les mots de passe ne sont pas identiques</p>
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
-
-                                            </form>
-
-                                    </div>
-
-
-                                </div>       
-
-                                </div>
-                                    
-                                <?php
-                                }
-                            
-                            
-                            }
-                                
-
-
-        else 
-
-                    {?>
-
-
+            
+                {
+                    ?>
                     <div class="container " id="page_centrale_connexion">
 
                     <div class="row h-100  ">
@@ -218,7 +140,7 @@ else {
                                                 <label for="confirm_password">Confirmer le Password</label>
                                                 <input  type="password" name="confirm_password" class="form-control" id="confirm_password">
                                             </div>
-                                            <p>veuillez remplir tous les champs</p>
+                                            <p>Pseudo déjà utilisé, veuillez en choisir un autre.</p>
                                             <button type="submit" class="btn btn-primary">Submit</button>
 
                                 </form>
@@ -229,12 +151,151 @@ else {
                     </div>       
 
                     </div>
+
                     <?php
-                    }}
-                    ?>
+                    }
+
+                    else {
 
 
 
+
+
+
+
+                                                
+                                        if ( $_POST['login'] != NULL AND  $_POST['nom'] != NULL AND  $_POST['prenom'] != NULL AND  $_POST['password'] != NULL AND  $_POST['confirm_password'] != NULL   )
+
+                                        {
+                                        
+                                                if ( @$_POST['confirm_password'] === @$_POST['password'] )
+
+
+                                                                    {
+
+                                                                        
+
+                                                                            $req = $bdd->prepare('INSERT INTO utilisateurs(login, nom, prenom, password) VALUES(:login, :nom, :prenom, :password)');
+                                                                            $req->execute(array(
+                                                                                'login' => $login,
+                                                                                'nom' => $nom,
+                                                                                'prenom' => $prenom,
+                                                                                'password' => $password,  ));
+
+                                                                                header('Location: connexion.php');//redirection
+                                                                            
+                                                                    }
+
+                                                else 
+
+                                                                    {?>
+
+
+                                                                    <div class="container " id="page_centrale_connexion">
+
+                                                                    <div class="row h-100  ">
+
+                                                                        <div class="col-12 h-100 d-flex justify-content-center align-items-center">
+
+                                                                                <form class="w-50"  action="inscription.php" method="post">
+
+
+                                                                                            <div class="form-group">
+                                                                                                <label for="login">Choisissez votre pseudo</label>
+                                                                                                <input  type="login" name="login" class="form-control" id="login" value="<?php if(isset($login)) {echo $login;} ?>">
+                                                                                            </div>
+
+                                                                                            <div class="form-group">
+                                                                                                <label for="nom">Votre nom</label>
+                                                                                                <input  type="text" name="nom" class="form-control" id="nom" value="<?php if(isset($nom)) {echo $nom;} ?>">
+                                                                                            </div>
+
+                                                                                            <div class="form-group">
+                                                                                                <label for="prenom">Votre prénom</label>
+                                                                                                <input  type="text" name="prenom" class="form-control" id="prenom" value="<?php if(isset($prenom)) {echo $prenom;} ?>">
+                                                                                            </div>
+
+                                                                                            <div class="form-group">
+                                                                                                <label for="password">Password</label>
+                                                                                                <input  type="password" name="password" class="form-control" id="password">
+                                                                                            </div>
+
+                                                                                            <div class="form-group">
+                                                                                                <label for="confirm_password">Confirmer le Password</label>
+                                                                                                <input  type="password" name="confirm_password" class="form-control" id="confirm_password">
+                                                                                            </div>
+                                                                                            <p>Les mots de passe ne sont pas identiques</p>
+                                                                                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                                                                                </form>
+
+                                                                        </div>
+
+
+                                                                    </div>       
+
+                                                                    </div>
+                                                                        
+                                                                    <?php
+                                                                    }
+                                                                
+                                                                
+                                                                }
+                                                                    
+
+
+                                            else 
+
+                                                        {?>
+
+
+                                                        <div class="container " id="page_centrale_connexion">
+
+                                                        <div class="row h-100  ">
+
+                                                            <div class="col-12 h-100 d-flex justify-content-center align-items-center">
+
+                                                                    <form class="w-50"  action="inscription.php" method="post">
+
+
+                                                                                <div class="form-group">
+                                                                                    <label for="login">Choisissez votre pseudo</label>
+                                                                                    <input  type="login" name="login" class="form-control" id="login" value="<?php if(isset($login)) {echo $login;} ?>">
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <label for="nom">Votre nom</label>
+                                                                                    <input  type="text" name="nom" class="form-control" id="nom" value="<?php if(isset($nom)) {echo $nom;} ?>">
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <label for="prenom">Votre prénom</label>
+                                                                                    <input  type="text" name="prenom" class="form-control" id="prenom" value="<?php if(isset($prenom)) {echo $prenom;} ?>">
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <label for="password">Password</label>
+                                                                                    <input  type="password" name="password" class="form-control" id="password">
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <label for="confirm_password">Confirmer le Password</label>
+                                                                                    <input  type="password" name="confirm_password" class="form-control" id="confirm_password">
+                                                                                </div>
+                                                                                <p>veuillez remplir tous les champs</p>
+                                                                                <button type="submit" class="btn btn-primary">Submit</button>
+
+                                                                    </form>
+
+                                                            </div>
+
+
+                                                        </div>       
+
+                                                        </div>
+                                                 <?php
+                                                 }}}
+                                                 ?>
 
 
 
