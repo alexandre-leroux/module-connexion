@@ -58,27 +58,27 @@ if ($_POST == NULL)
 
                                             <div class="form-group">
                                                 <label for="login">Choisissez votre pseudo</label>
-                                                <input required type="login" name="login" class="form-control" id="login" >
+                                                <input  type="login" name="login" class="form-control" id="login" >
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="nom">Votre nom</label>
-                                                <input required type="text" name="nom" class="form-control" id="nom">
+                                                <input  type="text" name="nom" class="form-control" id="nom">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="prenom">Votre prénom</label>
-                                                <input required type="text" name="prenom" class="form-control" id="prenom">
+                                                <input  type="text" name="prenom" class="form-control" id="prenom">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="password">Password</label>
-                                                <input required type="password" name="password" class="form-control" id="password">
+                                                <input  type="password" name="password" class="form-control" id="password">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="confirm_password">Confirmez le Password</label>
-                                                <input required type="password" name="confirm_password" class="form-control" id="confirm_password">
+                                                <input  type="password" name="confirm_password" class="form-control" id="confirm_password">
                                             </div>
 
                                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -100,7 +100,9 @@ else {
 
 
             
-     
+     if ( $_POST['login'] != NULL AND  $_POST['nom'] != NULL AND  $_POST['prenom'] != NULL AND  $_POST['password'] != NULL AND  $_POST['confirm_password'] != NULL   )
+
+     {
     
             if ( @$_POST['confirm_password'] === @$_POST['password'] )
 
@@ -136,27 +138,27 @@ else {
 
                                                         <div class="form-group">
                                                             <label for="login">Choisissez votre pseudo</label>
-                                                            <input required type="login" name="login" class="form-control" id="login" value="<?php if(isset($login)) {echo $login;} ?>">
+                                                            <input  type="login" name="login" class="form-control" id="login" value="<?php if(isset($login)) {echo $login;} ?>">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="nom">Votre nom</label>
-                                                            <input required type="text" name="nom" class="form-control" id="nom" value="<?php if(isset($nom)) {echo $nom;} ?>">
+                                                            <input  type="text" name="nom" class="form-control" id="nom" value="<?php if(isset($nom)) {echo $nom;} ?>">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="prenom">Votre prénom</label>
-                                                            <input required type="text" name="prenom" class="form-control" id="prenom" value="<?php if(isset($prenom)) {echo $prenom;} ?>">
+                                                            <input  type="text" name="prenom" class="form-control" id="prenom" value="<?php if(isset($prenom)) {echo $prenom;} ?>">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="password">Password</label>
-                                                            <input required type="password" name="password" class="form-control" id="password">
+                                                            <input  type="password" name="password" class="form-control" id="password">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="confirm_password">Confirmer le Password</label>
-                                                            <input required type="password" name="confirm_password" class="form-control" id="confirm_password">
+                                                            <input  type="password" name="confirm_password" class="form-control" id="confirm_password">
                                                         </div>
                                                         <p>Les mots de passe ne sont pas identiques</p>
                                                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -170,11 +172,66 @@ else {
 
                                 </div>
                                     
-<?php
-}}
+                                <?php
+                                }
+                            
+                            
+                            }
+                                
 
 
-?>
+        else 
+
+                    {?>
+
+
+                    <div class="container " id="page_centrale_connexion">
+
+                    <div class="row h-100  ">
+
+                        <div class="col-12 h-100 d-flex justify-content-center align-items-center">
+
+                                <form class="w-50"  action="inscription.php" method="post">
+
+
+                                            <div class="form-group">
+                                                <label for="login">Choisissez votre pseudo</label>
+                                                <input  type="login" name="login" class="form-control" id="login" value="<?php if(isset($login)) {echo $login;} ?>">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="nom">Votre nom</label>
+                                                <input  type="text" name="nom" class="form-control" id="nom" value="<?php if(isset($nom)) {echo $nom;} ?>">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="prenom">Votre prénom</label>
+                                                <input  type="text" name="prenom" class="form-control" id="prenom" value="<?php if(isset($prenom)) {echo $prenom;} ?>">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="password">Password</label>
+                                                <input  type="password" name="password" class="form-control" id="password">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="confirm_password">Confirmer le Password</label>
+                                                <input  type="password" name="confirm_password" class="form-control" id="confirm_password">
+                                            </div>
+                                            <p>veuillez remplir tous les champs</p>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                                </form>
+
+                        </div>
+
+
+                    </div>       
+
+                    </div>
+                    <?php
+                    }}
+                    ?>
 
 
 
