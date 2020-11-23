@@ -1,4 +1,4 @@
-<!-- header -->
+<!-- header de base -->
 <header class="container-sm-fluid sticky-top" id=header>
 
     <nav class="h-100 navbar navbar-expand-sm navbar-dark bg-dark ">

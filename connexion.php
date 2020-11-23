@@ -31,6 +31,9 @@
                 die('Erreur : ' . $e->getMessage());
             }
 
+        @$login = htmlspecialchars($_POST['login']);
+        @$password = password_hash($_POST['password'], PASSWORD_DEFAULT);   
+
 ?>
 
 
@@ -39,13 +42,12 @@
 if ( isset($_POST['submit']))
 {
     
-
+    //vérification que l'utilisateur existe bien dans la bdd
     $requete = $bdd->prepare(' SELECT * FROM utilisateurs where login = :login');
     $requete->execute(['login' => $_POST['login']]);
     $result = $requete->fetch();
 
-    @$login = htmlspecialchars($_POST['login']);
-    @$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    
 
  
 
@@ -53,10 +55,10 @@ if ( isset($_POST['submit']))
     {
      
 
-            if  ( password_verify($_POST['password'],$result['password']) AND $_POST['password'] === 'admin' AND $_POST['login'] === 'admin') 
+            if  ( password_verify($_POST['password'],$result['password']) AND $_POST['password'] === 'admin' AND $_POST['login'] === 'admin') //vérification si la connection concerne le compte admin
        
 
-                { session_start();
+                { session_start();// ouverture de la session admin
                     $req = $bdd->prepare('SELECT * FROM utilisateurs  WHERE login  = :login');
                     $req->execute(array(
                     
@@ -72,12 +74,12 @@ if ( isset($_POST['submit']))
                     header('Location: admin.php');//redirection
                 }
 
-            else
+            else 
 
                 {
 
 
-                        if ( password_verify($_POST['password'],$result['password']))
+                        if ( password_verify($_POST['password'],$result['password']))// sinon cerification du mpd, pour ouvrir une session utilisateur classique
 
                             {
                                 session_start();
@@ -118,7 +120,7 @@ if ( isset($_POST['submit']))
 
 
 
-
+<!-- formulaire de connexion -->
 <div class="container  " id="page_centrale_connexion">
 
 <div class="row h-100  ">

@@ -41,7 +41,7 @@
 </header>
 
 <?php 
-
+// déconnexion
     if ( isset($_POST['deco']))
 
         {

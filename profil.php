@@ -29,11 +29,15 @@
                 die('Erreur : ' . $e->getMessage());
             }
             
+            @$login = htmlspecialchars($_POST['login']);
+            @$nom = htmlspecialchars($_POST['nom']);
+            @$prenom = htmlspecialchars($_POST['prenom']);
+    
 ?>
 
 
 
-<?php 
+<?php // header différent selon si amdin ou un utilisateur lambda est connecté
 
     if ( $_SESSION['login'] == 'admin')
     {

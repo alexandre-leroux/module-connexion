@@ -159,17 +159,13 @@ else {
 
 
 
-
-
-
-
                                                 
                                         if ( $_POST['login'] != NULL AND  $_POST['nom'] != NULL AND  $_POST['prenom'] != NULL AND  $_POST['password'] != NULL AND  $_POST['confirm_password'] != NULL   )
-
+                                            // si tous les champs sont remplis, on peu passer à la suite
                                         {
                                         
                                                 if ( @$_POST['confirm_password'] === @$_POST['password'] )
-
+                                                    // on verifie d'abord que les mdp sont bien identiques
 
                                                                     {
 
@@ -187,7 +183,7 @@ else {
                                                                     }
 
                                                 else 
-
+                                                    // si mdp non identiques, on génère le formulaire avec un message
                                                                     {?>
 
 
@@ -245,7 +241,7 @@ else {
 
 
                                             else 
-
+                                                // si des champs sont vides, on génère le formulaire avec un message
                                                         {?>
 
 

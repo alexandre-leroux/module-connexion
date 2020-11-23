@@ -1,4 +1,4 @@
-<!-- header lors de connexion utilisateur -->
+<!-- header lors de connexion admin -->
 
 <header class="container-fluid-xl  sticky-top" id=header>
 
@@ -39,7 +39,7 @@
 </header>
 
 <?php 
-
+// déconnexion
     if ( isset($_POST['deco']))
 
         {
